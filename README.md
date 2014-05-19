@@ -11,6 +11,8 @@ Assets → Import Packages → Water (Basic)　（Pro版の方は「Water (Pro O
 Assets → Import Packages → Skyboxes<br/>
 Assets → Import Packages → Particles して、Importします。<br/>
 
+![Alt text](/README_Resource/Assets_ImportPackages.png)
+
 ###【完成図】
 CompleteGame をダブルクリックして、完成シーンを開きます。<br/>
 こんなゲームを作ります。<br/>
