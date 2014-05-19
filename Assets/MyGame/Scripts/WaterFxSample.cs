@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class WaterFx : MonoBehaviour {
+public class WaterFxSample : MonoBehaviour {
 
-	public BoardController board;
+	public BoardController_Complete board;
 
 	// Use this for initialization
 	void Start () {

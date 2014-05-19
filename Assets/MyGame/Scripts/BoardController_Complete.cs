@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class BoardController : MonoBehaviour {
-
+public class BoardController_Complete : MonoBehaviour {
+	// ここから
 	public Vector3 moveSpeed;
 	public bool isGround = false;
 	public Transform boardObject;
@@ -17,10 +17,10 @@ public class BoardController : MonoBehaviour {
 			jumpDetector = GetComponent<OculusJump>();
 		}
 	}
-
+	
 	private float xForce;
 	private bool isJump;
-
+	
 	void Update () {
 		if ( isOculus )  {
 			Vector3 angles = jumpDetector.riftCam.transform.rotation.eulerAngles;
@@ -63,4 +63,5 @@ public class BoardController : MonoBehaviour {
 		// check ground for a water effect
 		if ( col.gameObject.CompareTag("Ground") ) isGround = true;
 	}
+	// ここまで
 }

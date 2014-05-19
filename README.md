@@ -138,6 +138,7 @@ Hierarchy の BoardBase を選択すると、Inspectorの下の方に「Board Co
 		this.rigidbody.velocity = vel;
 
 すると、ちゃんと前に進みますか？<br/>
+うまく行かなかった場合は BoardController_Ver1.cs の「// ここから」「// ここまで」をコピーして、該当のところにコピペしてください。
 
 ###【OnCollisionEnter】
 地面に付いている判定をしましょう。<br/>
@@ -155,6 +156,7 @@ Update関数の 終了の中括弧閉じ「}」の後に以下のプログラム
 	}
 
 ここの「Ground」というのは”タグ”という概念で条件分岐しています。<br/>
+面倒な場合は BoardController_Ver2.cs の「// ここから」「// ここまで」をコピーして、該当のところにコピペしてください。
 それを今から設定してみましょう。<br/>
 
 ###【Tag】
@@ -176,6 +178,7 @@ Element 0 の所に「Ground」という文字を代入します。（もう一�
 		}
 
 を追加します。こうすると、ジャンプできるようになります。<br/>
+うまくいかなかった場合は BoardController_Ver3.cs の「// ここから」「// ここまで」をコピーして、該当のところにコピペしてください。
 
 ###【ジャンプ時にエフェクトオフに】（時間次第で削除）
 ジャンプ時にちゃんとエフェクトがでるのは変ですよね。<br/>
@@ -203,6 +206,7 @@ Update関数の中括弧の間に<br/>
 		}
 
 を追加します。「ファイル → 保存」をしてファイルを保存を忘れないでください。そしてUnityに戻ります。<br/>
+面倒な場合はWaterFxSampleをコピペしてください。（その際は BoardController_Complete を BoardController に変更することをお忘れなく！）<br/>
 <br/>
 先ほどの「Water Fountain」を選択して、Inspectorの下の方をみると、「Water Fx (Script)」がありますが、「Board」の項目が「None (Board Controller)」となっています。<br/>
 ここにBoard ControllerをD&Dします。<br/>
@@ -271,6 +275,7 @@ Game Object → Create Other → Cube<br/>
 というように修正してください。<br/>
 <br/>
 これで、入力と移動を分離できました。<br/>
+うまくいかなかった場合は BoardController_Ver4.cs の「// ここから」「// ここまで」をコピーして、該当のところにコピペしてください。
 
 ###【傾くように】（時間次第で削除）
 サーフィンボードが傾かないので味気ないですね。傾くようにしてみましょうか<br/>
@@ -293,6 +298,7 @@ Target Angle には Yには20 を Zには-30を入れましょう。<br/>
 <br/>
 これでどうでしょうか？<br/>
 ボードが傾くようになったでしょうか。<br/>
+うまくいかなかった場合は BoardController_Ver5.cs の「// ここから」「// ここまで」をコピーして、該当のところにコピペしてください。
 
 ###【Oculus対応その１】
 ではお待ちかねのOculus Riftに対応してみましょう。<br/>
@@ -308,15 +314,31 @@ Assets → Import Package → Custom Package... で、[ovr_unity/OculusUnityInte
 ###【Oculus対応その２】（時間次第で削除）
 今回は傾きでコントロールできるようにしましょう。ジャンプは加速度で判定します。<br/>
 そして、OculusJump.cs というスクリプトをBoardBaseに追加します。<br/>
+そして34,35行目のコメントしている部分
+ //		if ( OVRDevice.IsHMDPresent() == false ) return;
+ //		OVRDevice.GetAcceleration(0, ref x, ref y, ref z);
+を
+ 		if ( OVRDevice.IsHMDPresent() == false ) return;
+ 		OVRDevice.GetAcceleration(0, ref x, ref y, ref z);
+というようにコメント解除。
+
 <br/>
-定義のところを<br/>
+BoardControllerの定義のところを<br/>
 
 	public bool isOculus = true;
 	private OculusJump jumpDetector;
 	public float angleLimit = 45.0f;
 
 を追加します。<br/>
+Start関数に<br/>
 
+		if ( isOculus ) {
+			jumpDetector = GetComponent<OculusJump>();
+		}
+
+を追加します。<br/>
+<br/>
+Update関数の<br/>
 
 		xForce = Input.GetAxisRaw("Horizontal");
 
@@ -347,3 +369,4 @@ Assets → Import Package → Custom Package... で、[ovr_unity/OculusUnityInte
 		}
 
 これでOculus対応が出来たと思います。<br/>
+完成版のBoardController は BoardController_Complete.cs を参照してください。
