@@ -31,8 +31,8 @@ public class OculusJump : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		#if UNITY_STANDALONE || UNITY_EDITOR
-		if ( OVRDevice.IsHMDPresent() == false ) return;
-		OVRDevice.GetAcceleration(0, ref x, ref y, ref z);
+//		if ( OVRDevice.IsHMDPresent() == false ) return;
+//		OVRDevice.GetAcceleration(0, ref x, ref y, ref z);
 		acc = new Vector3(-x, -y, z);
 		#elif UNITY_IPHONE || UNITY_ANDROID
 		acc = new Vector3( Input.acceleration.x * 9.81f, Input.acceleration.y * 9.81f, -Input.acceleration.z * 9.81f);
