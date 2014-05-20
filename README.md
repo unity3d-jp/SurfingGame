@@ -16,6 +16,7 @@ Assets → Import Packages → Particles して、Importします。<br/>
 ###【完成図】
 CompleteGame をダブルクリックして、完成シーンを開きます。<br/>
 ![](README_Resource/CompleteGame_Scene.png)
+<br/>
 こんなゲームを作ります。<br/>
 
 ###【背景を作って雰囲気出し】
@@ -36,17 +37,19 @@ Edit → Render Settings　Skybox Material に [Starndard Assets/Skyboxes/Sunny2
 
 Unity → Preferences... (Windowsは 「Edit → Preferences...」)　で　ColorsタブのPlaymode tintで色変更すると、プレイ中のEditor色が変わります。<br/>
 ![](README_Resource/PlaymodeTint.png)
+<br/>
 こうすると「プレイ中」ということが分かりやすくなるので、プレイ中に編集してしまうという間違いが減るということです。<br/>
 
 ###【シーンを保存】
-ここらでFile → Save Scene でシーンファイルをセーブしましょう。名前は適当に「Game」とかで。<br/>
+ここらでFile → Save Scene でシーンファイルをセーブしましょう。名前は適当に「Game」とかにしましょうか。<br/>
 ![](README_Resource/SaveScene.png)
 
 ###【プレイヤー作成】
 GameObject → Crete Other → Cube<br/>
 ![](README_Resource/GameObjectBoard.png)
-Position (0,0,0.04) Scale (1, 0.2, 4)<br/>
+<br/>
 名前をBoardに<br/>
+Position (0,0,0.04) Scale (1, 0.2, 4)<br/>
 
 ###【暗いのでライト】
 GameObject → Crete Other → Directional Light<br/>
@@ -67,31 +70,46 @@ GameObject → Crete Other → Sphere<br/>
 Position (0,0,0)<br/>
 Mesh Renderer を オフに（必要ないので）<br/>
 名前をBoardBaseに<br/>
+![](README_Resource/GameObjectBoardBase.png)
+<br/>
 Component → Physics → Rigidbody で物理挙動が付きます<br/>
+Sherer Collider のRadius を 1 にします。Rigidbodyの方も、Constraintsの（もし開いていなければ▲をクリックして開きます）Freeze RotationのXYZを全てチェック入れて、回転はしないようにします。<br/>
+![](README_Resource/Rigidbody.png)
+<br/>
 
 Hierarchy で 「Board」を「BoardBase」にD&Dして親子関係にする。こうすることで、親のBoardBaseが動けば、子供のBoardが動くということになる。<br/>
 子供の「Board」のBoxColliderはいらないので、削除しましょう。InspectorのBox Colliderの右の小さい歯車アイコンをクリックして「Remove Component」を選択して削除<br/>
+![](README_Resource/Parent.png)
+<br/>
 
 
 ###【フォルダ作成】
 ちょっとここらでファイル整理しましょう。<br/>
 Projectビューで右クリック→ Create → Folder で名前を MyGame<br/>
-もう一つその中に、Prefabsというフォルダを作る（名前の意味はない）<br/>
-同様に、Scripts、Materialsも作っておく<br/>
+もう一つその中に、Prefabsというフォルダを作ります（名前の意味はない）<br/>
+同様に、Scripts、Materialsも作っておきます<br/>
+![](README_Resource/Folder.png)
+<br/>
 
 ###【マテリアル】
-Materialsフォルダの中に入って、右クリック → Create → Material して新規マテリアルを作る。<br/>
+Materialsフォルダの中に入って、右クリック → Create → Material して新規マテリアルを作ります。<br/>
 マテリアルとは素材、材質、ということ。<br/>
-名前を「SideBarMat」とかにしておく<br/>
+名前を「SideBarMat」とかにしておきます。<br/>
 Main Color の色の部分をクリックして、色を赤に変更。<br/>
+![](README_Resource/SideBarMat.png)
+<br/>
 
 ###【Prefab】
 GameObject → Crete Other → Cube<br/>
 Position (-10,0,500) Scale (1, 0.2, 1000)<br/>
 名前をSideBarに<br/>
 SideBarを Hierarchy の SideBar をProjectの「MyGame/Prefabs」D&Dする。するとPrefabが作られます<br/>
+![](README_Resource/Prefab.png)
+<br/>
 <br/>
 今度はそのPrefabを使って、Hierarchy にD&Dして、Position のXを -10 → 10に変更します。（二つのSideBarになる）<br/>
+![](README_Resource/Prefab2.png)
+<br/>
 <br/>
 何がうれしいかというと、大元のPrefabを変更すると、全てのPrefabに適応されるということです。<br/>
 <br/>
@@ -99,14 +117,13 @@ SideBarを Hierarchy の SideBar をProjectの「MyGame/Prefabs」D&Dする。�
 先ほどの[MyGame/Materials/SideBarMat]をSideBarのInspectorビューの先ほどの「Default-Diffuse」の所に上書きするようにD&Dして、マテリアルを適応させます。<br/>
 <br/>
 すると、大元のPrefabを赤に変更したので、二つのSideBarが両方とも赤になりました。<br/>
+![](README_Resource/Prefab3.png)
+<br/>
 つまり最初に適当に作っておいても、後でデザイン素材を修正することも容易だということです。<br/>
 
 ###【Camera】
 カメラの位置を変更しましょう。Main Camera を選択。PositionのZ を 0 にします。<br/>
 Hierarchyの BoardBase の上にD&Dして、子供します。<br/>
-
-###【Rigidbody】
-BoardBaseのRigidbodyの設定で、Constraints のFreeze Rotation XYZを全てチェック入れて、回転運動はオフっておきましょう。<br/>
 
 ###【Legacy Particle】
 [Standard Assets/Particles/Water/Water Fountain] を Hierarchy に D&D。<br/>
