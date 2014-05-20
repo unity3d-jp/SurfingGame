@@ -11,22 +11,22 @@ Assets → Import Packages → Water (Basic)　（Pro版の方は「Water (Pro O
 Assets → Import Packages → Skyboxes<br/>
 Assets → Import Packages → Particles して、Importします。<br/>
 
-<img boarder=0 src="./README_Resource/Assets_ImportPackages.png" height="256" />
+![](README_Resource/Assets_ImportPackages.png)
 
 ###【完成図】
 CompleteGame をダブルクリックして、完成シーンを開きます。<br/>
-<img boarder=0 src="./README_Resource/CompleteGame_Scene.png" height="256" />
+![](README_Resource/CompleteGame_Scene.png)
 こんなゲームを作ります。<br/>
 
 ###【背景を作って雰囲気出し】
 海を作ります。<br/>
 「Standard Assets/Water (Basic)/Daylight Simple Water」をHierarchyにドラッグアンドドロップ（以下D&D）。Position(0,0,1000)、Scaleを(1600,1,1600)に<br/>
-<img boarder=0 src="./README_Resource/DaylightWater.png" height="256" />
+![](README_Resource/DaylightWater.png)
 
 ###【Skybox】
 空を作ります。<br/>
 Edit → Render Settings　Skybox Material に [Starndard Assets/Skyboxes/Sunny2 Skybox] をD&D<br/>
-<img boarder=0 src="./README_Resource/RenderSettings.png" height="256" />
+![](README_Resource/RenderSettings.png)
 <br/>
 プレイしてみましょう。<br/>
 ためしに何かオブジェクトを移動させてみましょう。そして再度プレイボタンを押して止めてみましょう。<br/>
@@ -35,30 +35,30 @@ Edit → Render Settings　Skybox Material に [Starndard Assets/Skyboxes/Sunny2
 ###【プレイ中の変更は反映しない！】
 
 Unity → Preferences... (Windowsは 「Edit → Preferences...」)　で　ColorsタブのPlaymode tintで色変更すると、プレイ中のEditor色が変わります。<br/>
-<img boarder=0 src="./README_Resource/PlaymodeTint.png" height="256" />
+![](README_Resource/PlaymodeTint.png)
 こうすると「プレイ中」ということが分かりやすくなるので、プレイ中に編集してしまうという間違いが減るということです。<br/>
 
 ###【シーンを保存】
 ここらでFile → Save Scene でシーンファイルをセーブしましょう。名前は適当に「Game」とかで。<br/>
-<img boarder=0 src="./README_Resource/SaveScene.png" height="256" />
+![](README_Resource/SaveScene.png)
 
 ###【プレイヤー作成】
 GameObject → Crete Other → Cube<br/>
-<img boarder=0 src="./README_Resource/GameObjectBoard.png" height="256" />
+![](README_Resource/GameObjectBoard.png)
 Position (0,0,0.04) Scale (1, 0.2, 4)<br/>
 名前をBoardに<br/>
 
 ###【暗いのでライト】
 GameObject → Crete Other → Directional Light<br/>
 Shadow Type を Soft Shadowsに<br/>
-<img boarder=0 src="./README_Resource/DirectionalLight.png" height="256" />
+![](README_Resource/DirectionalLight.png)
 
 ###【移動範囲を設定】
 GameObject → Crete Other → Cube<br/>
 Position (0,-1.5,1000) Scale (3000, 1, 3000)<br/>
 名前をShallows（浅瀬という意味）にしましょう<br/>
 Mesh Renderer を オフに（必要ないので）しておきます<br/>
-<img boarder=0 src="./README_Resource/GameObjectShallows.png" height="256" />
+![](README_Resource/GameObjectShallows.png)
 
 ###【親子関係】
 このままだとボードが水面下に入ってしまうので、ボードは表面において、コリジョンは水面下でやりたいのです。<br/>
