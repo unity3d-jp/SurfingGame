@@ -355,35 +355,44 @@ Target Angle には Yには20 を Zには-30を入れましょう。<br/>
 ###【Oculus対応その１】
 ではお待ちかねのOculus Riftに対応してみましょう。<br/>
 まずはOculusVRのサイトで開発者登録をする必要があります。<br/>
-①developer.oculusvr.com のサイトにアクセスします。 ②Registerをクリックします。
+１、①developer.oculusvr.com のサイトにアクセスします。 ②Registerをクリックします。
 ![](README_Resource/Oculus1.png)
 <br/>
-必要な項目を登録します。
+<br/>
+２、必要な項目を登録します。<br/>
 ![](README_Resource/Oculus2.png)
 <br/>
-メールを送ったよー的なメッセージが表示されます。
+<br/>
+３、メールを送ったよー的なメッセージが表示されます。<br/>
 ![](README_Resource/Oculus3.png)
 <br/>
-OculusVRからメールが来ているので、リンクをクリックしてサイトに飛びます
+<br/>
+４、OculusVRからメールが来ているので、リンクをクリックしてサイトに飛びます<br/>
 ![](README_Resource/Oculus4.png)
 <br/>
-認証サイトに飛びます。Nextをクリックします
+<br/>
+５、認証サイトに飛びます。Nextをクリックします<br/>
 ![](README_Resource/Oculus5.png)
 <br/>
-プロジェクト名とJapanを設定して、Create Projectをクリックします。
+<br/>
+６、プロジェクト名とJapanを設定して、Create Projectをクリックします。<br/>
 ![](README_Resource/Oculus6.png)
 <br/>
-これで開発者登録が完了しました。
+<br/>
+これで開発者登録が完了しました。<br/>
 <br/>
 <br/>
-①Loginをクリックし、②ユーザー名、パスワードを入力し、③Loginボタンをクリックします
+７、①Loginをクリックし、②ユーザー名、パスワードを入力し、③Loginボタンをクリックします<br/>
 ![](README_Resource/Oculus7.png)
 <br/>
-右側の「Latest Builds」のリンクをクリックします。（今回は0.2.5cを使います）
+<br/>
+８、右側の「Latest Builds」のリンクをクリックします。（今回は0.2.5cを使います）<br/>
 ![](README_Resource/Oculus8.png)
 <br/>
-「Unity 4 Pro Integration」のダウンロードボタンをクリックします。
+<br/>
+９、「Unity 4 Pro Integration」のダウンロードボタンをクリックします。<br/>
 ![](README_Resource/Oculus9.png)
+<br/>
 <br/>
 Oculus Rift SDKをダウンロードしてきて、そのパッケージの中にある「OculusUnityIntegration.unitypackage」をImportします。<br/>
 Assets → Import Package → Custom Package... で、[ovr_unity/OculusUnityIntegration/OculusUnityIntegration.unitypackage] を選択してOpenします。<br/>
