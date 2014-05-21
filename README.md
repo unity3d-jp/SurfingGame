@@ -408,8 +408,8 @@ Assets → Import Package → Custom Package... で、[ovr_unity/OculusUnityInte
 そして、OculusJump.cs というスクリプトをBoardBaseに追加します。<br/>
 そして34,35行目のコメントしている部分<br/>
 
- //		if ( OVRDevice.IsHMDPresent() == false ) return;
- //		OVRDevice.GetAcceleration(0, ref x, ref y, ref z);
+	//		if ( OVRDevice.IsHMDPresent() == false ) return;
+	//		OVRDevice.GetAcceleration(0, ref x, ref y, ref z);
 
 を<br/>
 
