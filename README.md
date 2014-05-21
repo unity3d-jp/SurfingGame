@@ -124,6 +124,8 @@ SideBarを Hierarchy の SideBar をProjectの「MyGame/Prefabs」D&Dする。�
 ###【Camera】
 カメラの位置を変更しましょう。Main Camera を選択。PositionのZ を 0 にします。<br/>
 Hierarchyの BoardBase の上にD&Dして、子供します。<br/>
+![](README_Resource/Camera.png)
+<br/>
 
 ###【Legacy Particle】
 [Standard Assets/Particles/Water/Water Fountain] を Hierarchy に D&D。<br/>
