@@ -85,6 +85,7 @@ Hierarchy で 「Board」を「BoardBase」にD&Dして親子関係にする。�
 
 ###【フォルダ作成】
 ちょっとここらでファイル整理しましょう。<br/>
+（既にGitHubからプロジェクトを持ってきている場合は、フォルダを作る必要ありません）
 Projectビューで右クリック→ Create → Folder で名前を MyGame<br/>
 もう一つその中に、Prefabsというフォルダを作ります（名前の意味はない）<br/>
 同様に、Scripts、Materialsも作っておきます<br/>
@@ -128,32 +129,39 @@ Hierarchyの BoardBase の上にD&Dして、子供します。<br/>
 <br/>
 
 ###【Legacy Particle】
-[Standard Assets/Particles/Water/Water Fountain] を Hierarchy に D&D。<br/>
-Ellipsoid Particle EmitterのLocal Velocity の Y を 4 にしてちょっと弱く。<br/>
+①[Standard Assets/Particles/Water/Water Fountain] を Hierarchy に D&D。<br/>
+②Position( 0, 0, 2.1 )　Rotation( 70, 0, 0 ) とか。<br/>
+③Ellipsoid Particle EmitterのLocal Velocity の Y を 4 にしてちょっと弱く。<br/>
 Random Velocity の X を 4 にしてちょっと拡散するようにします。<br/>
+④BoardBaseの子供にしておきましょう。<br/>
+![](README_Resource/LegacyParticle.png)
 <br/>
-Position( 0, 0, 2.1 )　Rotation( 70, 0, 0 ) とか。<br/>
-BoardBaseの子供にしておきましょう。<br/>
 
 ###【スクリプトでプレイヤーの動きを】
-[MyGame/Scripts]の中で 右クリック→ Create → C# Scriptでスクリプトを作りましょう。<br/>
-最初に設定する名前が重要で、Class名になります。ここでは「BoardController」にしましょう。<br/>
+①[MyGame/Scripts]の中で 右クリック→ Create → C# Scriptでスクリプトを作りましょう。<br/>
+②最初に設定する名前が重要で、Class名になります。ここでは「BoardController」にしましょう。<br/>
+![](README_Resource/Script1.png)
+<br/>
 
 ###【スクリプトとComponentの関係】
-BoardControllerをHierarchyのBoardBaseにD&D<br/>
-Hierarchy の BoardBase を選択すると、Inspectorの下の方に「Board Controller (Script)」という項目があると思います。<br/>
+①BoardControllerをHierarchyのBoardBaseにD&D<br/>
+②Hierarchy の BoardBase を選択すると、Inspectorの下の方に「Board Controller (Script)」という項目があると思います。<br/>
+<br/>
 つまりこうすることで、BoardControllerスクリプトの機能を BoardBase に追加したことになりました。<br/>
 <br/>
-右上の「Open」をクリックして、MonoDevelop を開きます。<br/>
-<br/>
-ためしに、６行目に、以下のプログラムを追加してみましょう。<br/>
+③BoardControllerをダブルクリックして、MonoDevelop を開きます。<br/>
+![](README_Resource/Script2.png)
 
- 	public Vector3 moveSpeed;
+<br/>
+①ためしに、６行目に、以下のプログラムを追加してみましょう。<br/>
+
+ 	public Vector3 moveSpeed = new Vector3(4,4,8);
 
 「ファイル → 保存」でファイル保存してください。<br/>
-そうして、Unityに戻ります。すると、さっきのInspector が変化しているのが確認できます。<br/>
+②そうして、Unityに戻ります。すると、さっきのInspector が変化しているのが確認できます。<br/>
 「Move Speed」という項目が追加されているのがわかるでしょうか。<br/>
 こうやって Unity と スクリプトで連携しながらゲームを作って行くのが、Unityにおけるプログラミングです。<br/>
+![](README_Resource/Script3.png)
 
 ###【Input】
 次はUpdateの中に以下のプログラムを追加してみましょう。<br/>
@@ -169,7 +177,9 @@ Hierarchy の BoardBase を選択すると、Inspectorの下の方に「Board Co
 		this.rigidbody.velocity = vel;
 
 すると、ちゃんと前に進みますか？<br/>
-うまく行かなかった場合は BoardController_Ver1.cs の「// ここから」「// ここまで」をコピーして、該当のところにコピペしてください。
+うまく行かなかった場合は BoardController_Ver1.cs の「// ここから」「// ここまで」をコピーして、該当のところにコピペしてください。<br/>
+![](README_Resource/Script4.png)
+<br/>
 
 ###【OnCollisionEnter】
 地面に付いている判定をしましょう。<br/>
@@ -191,13 +201,17 @@ Update関数の 終了の中括弧閉じ「}」の後に以下のプログラム
 それを今から設定してみましょう。<br/>
 
 ###【Tag】
-HierarchyのShallowsを選択して、Inspectorの一番上のTagをクリックすると、項目が表示されますが、一番下の「Add Tag...」をクリックすると、Tag & Layersビューが表示されます。<br/>
+①メニューからEdit→Project Settings→Tags and Layersを選択すると、Tag & Layersビューが表示されます。<br/>
 これのTagsに追加していきましょう。<br/>
-Element 0 の所に「Ground」という文字を代入します。（もう一つ空欄が増えますが気にしないでください）<br/>
+②Element 0 の所に「Ground」という文字を代入します。（もう一つ空欄が増えますが気にしないでください）<br/>
 これで「Ground」タグが増えました。<br/>
+![](README_Resource/TagsLayers.png)
 <br/>
-再度HierarchyのShallowsを選択して、Inspectorの一番上のTagをクリックすると、今度は「Ground」という先ほど追加した項目が増えているので、これを選択します。<br/>
+<br/>
+①HierarchyのShallowsを選択して、②Inspectorの一番上のTagをクリックすると、今度は「Ground」という先ほど追加した項目が増えているので、これを選択します。<br/>
 これで、ShallowsオブジェクトがGroundタグが付きました。<br/>
+![](README_Resource/TagsLayers2.png)
+
 
 ###【ジャンプ可能に】
 「this.rigidbody.velocity = vel;」 の行の手前に<br/>
@@ -210,24 +224,27 @@ Element 0 の所に「Ground」という文字を代入します。（もう一�
 
 を追加します。こうすると、ジャンプできるようになります。<br/>
 うまくいかなかった場合は BoardController_Ver3.cs の「// ここから」「// ここまで」をコピーして、該当のところにコピペしてください。
+![](README_Resource/Script5.png)
 
 ###【ジャンプ時にエフェクトオフに】（時間次第で削除）
 ジャンプ時にちゃんとエフェクトがでるのは変ですよね。<br/>
 では、水エフェクトをオンオフするためのスクリプトを作りましょうか。<br/>
-今度は違うスクリプトの作成法にしてみましょうか。<br/>
-Project ビューからではなく、Hierarchy の「Water Fountain」（BoardBaseの子供になっています）を選択します。<br/>
-Inspector の一番下の「Add Component」で、「New Script」を選びます。<br/>
-そして「WaterFx」、Laungageは「CSharp」にします。こうすることでスクリプトを作ると同時に、GameObjectにそのスクリプトを付加することもできるのです。<br/>
+今度は違う方法でスクリプトを作成してみましょうか。<br/>
+①Project ビューからではなく、Hierarchy の「Water Fountain」（BoardBaseの子供になっています）を選択します。<br/>
+②Inspector の一番下の「Add Component」で、「New Script」を選びます。<br/>
+③そして「WaterFx」、Laungageは「CSharp」にします。こうすることでスクリプトを作ると同時に、GameObjectにそのスクリプトを付加することもできるのです。<br/>
+<br/>
+![](README_Resource/Script6.png)
 <br/>
 では、スクリプトを編集して行きます。付けたWaterFxの右側の歯車アイコンをクリックして、一番下の「Edit Script」をクリックして、スクリプトファイルを開いてください。<br/>
 <br/>
-「public class WaterFx : MonoBehaviour {」の行の下に<br/>
+①「public class WaterFx : MonoBehaviour {」の行の下に<br/>
 
 	public BoardController board;
 
 を追加します。<br/>
 <br/>
-Update関数の中括弧の間に<br/>
+②Update関数の中括弧の間に<br/>
 
 		if ( board.isGround && this.particleEmitter.emit == false ) {
 			this.particleEmitter.emit = true;
@@ -237,16 +254,20 @@ Update関数の中括弧の間に<br/>
 		}
 
 を追加します。「ファイル → 保存」をしてファイルを保存を忘れないでください。そしてUnityに戻ります。<br/>
+![](README_Resource/Script7.png)
+<br/>
 面倒な場合はWaterFxSampleをコピペしてください。（その際は BoardController_Complete を BoardController に変更することをお忘れなく！）<br/>
 <br/>
 先ほどの「Water Fountain」を選択して、Inspectorの下の方をみると、「Water Fx (Script)」がありますが、「Board」の項目が「None (Board Controller)」となっています。<br/>
 ここにBoard ControllerをD&Dします。<br/>
-このままHierarchy の「BardBase」を、先ほどの「None (Board Controller)」のところにD&Dします。うまくD&Dでくると、「None (Board Controller)」が「BoardBase (Board Controller)」となります。<br/>
+このままHierarchy の「BoardBase」を、先ほどの「None (Board Controller)」のところにD&Dします。うまくD&Dでくると、「None (Board Controller)」が「BoardBase (Board Controller)」となります。<br/>
+![](README_Resource/Script8.png)
+<br/>
 <br/>
 これで、ジャンプの際に水エフェクトが消えるようになったでしょうか。<br/>
 
 ###【障害物の配置】
-では邪魔な障害物を作って行きましょう。<br/>
+では障害物を作って行きましょう。<br/>
 Game Object → Create Other → Sphere<br/>
 で球オブジェクトを作ります。名前はBallとかにしておきましょう。<br/>
 <br/>
@@ -333,6 +354,37 @@ Target Angle には Yには20 を Zには-30を入れましょう。<br/>
 
 ###【Oculus対応その１】
 ではお待ちかねのOculus Riftに対応してみましょう。<br/>
+まずはOculusVRのサイトで開発者登録をする必要があります。<br/>
+①developer.oculusvr.com のサイトにアクセスします。 ②Registerをクリックします。
+![](README_Resource/Oculus1.png)
+<br/>
+必要な項目を登録します。
+![](README_Resource/Oculus2.png)
+<br/>
+メールを送ったよー的なメッセージが表示されます。
+![](README_Resource/Oculus3.png)
+<br/>
+OculusVRからメールが来ているので、リンクをクリックしてサイトに飛びます
+![](README_Resource/Oculus4.png)
+<br/>
+認証サイトに飛びます。Nextをクリックします
+![](README_Resource/Oculus5.png)
+<br/>
+プロジェクト名とJapanを設定して、Create Projectをクリックします。
+![](README_Resource/Oculus6.png)
+<br/>
+これで開発者登録が完了しました。
+<br/>
+<br/>
+①Loginをクリックし、②ユーザー名、パスワードを入力し、③Loginボタンをクリックします
+![](README_Resource/Oculus7.png)
+<br/>
+右側の「Latest Builds」のリンクをクリックします。（今回は0.2.5cを使います）
+![](README_Resource/Oculus8.png)
+<br/>
+「Unity 4 Pro Integration」のダウンロードボタンをクリックします。
+![](README_Resource/Oculus9.png)
+<br/>
 Oculus Rift SDKをダウンロードしてきて、そのパッケージの中にある「OculusUnityIntegration.unitypackage」をImportします。<br/>
 Assets → Import Package → Custom Package... で、[ovr_unity/OculusUnityIntegration/OculusUnityIntegration.unitypackage] を選択してOpenします。<br/>
 続けて、Importボタンを押します。<br/>

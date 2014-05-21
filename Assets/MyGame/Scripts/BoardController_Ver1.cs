@@ -3,11 +3,11 @@ using System.Collections;
 
 public class BoardController_Ver1 : MonoBehaviour {
 	// ここから
-	public Vector3 moveSpeed;
+	public Vector3 moveSpeed = new Vector3(4,4,8);
 
 	// Use this for initialization
 	void Start () {
-	
+
 	}
 	
 	// Update is called once per frame

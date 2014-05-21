@@ -3,7 +3,7 @@ using System.Collections;
 
 public class BoardController_Ver3 : MonoBehaviour {
 	// ここから
-	public Vector3 moveSpeed;
+	public Vector3 moveSpeed = new Vector3(4,4,8);
 	public bool isGround = false;
 
 	// Use this for initialization
