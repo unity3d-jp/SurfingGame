@@ -406,14 +406,18 @@ Assets → Import Package → Custom Package... で、[ovr_unity/OculusUnityInte
 ###【Oculus対応その２】（時間次第で削除）
 今回は傾きでコントロールできるようにしましょう。ジャンプは加速度で判定します。<br/>
 そして、OculusJump.cs というスクリプトをBoardBaseに追加します。<br/>
-そして34,35行目のコメントしている部分
+そして34,35行目のコメントしている部分<br/>
+
  //		if ( OVRDevice.IsHMDPresent() == false ) return;
  //		OVRDevice.GetAcceleration(0, ref x, ref y, ref z);
-を
+
+を<br/>
+
  		if ( OVRDevice.IsHMDPresent() == false ) return;
  		OVRDevice.GetAcceleration(0, ref x, ref y, ref z);
-というようにコメント解除。
 
+というようにコメント解除。<br/>
+<br/>
 <br/>
 BoardControllerの定義のところを<br/>
 
