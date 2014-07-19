@@ -306,6 +306,13 @@ BoardBaseの「Spherer Collider」のCenter の 1.2 にしましょう。<br/>
 Game Object → Create Other → Cube<br/>
 ポジションは(0,0,40)ぐらい、スケールは(19,1,1)にして幅広にしましょう。<br/>
 マテリアルはさっきのBallMatを適応させてしまいましょう。<br/>
+<br/>
+このままぶつかると、そこで止まってしまいます。摩擦が大きいんですね。<br/>
+そこで新たにPhysic Material で物理挙動に関する設定を作りましょう。<br/>
+Assets → Create → Physic Material <br/>
+とやって、新しいPhysic Materialを作って、名前は「Obstacle」とでもしておきましょう。<br/>
+そして、Dynamic Friction、Static Friction、を 0 にしましょう。そして、Friction Combine をMinimumにしておきましょう。平均だとぶつかった相手との相互作用になってしまうので<br/>
+これでどうでしょう？うまく滑りましたか？<br/>
 
 ###【Update と Fixed Update】（時間次第で削除）
 このゲームはこのままでもいいのですが、他オブジェクトも動いている場合はこのままだと不整合が起きてしまいます。<br/>
