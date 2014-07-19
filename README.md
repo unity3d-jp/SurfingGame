@@ -13,10 +13,6 @@ Inspector View
 
 #### ４つのScene View 操作
 
-#### シーンのセーブ
-
-#### シーンの注意
-
 ###【Import Asset】
 以下のパッケージをインポートします。<br/>
 Assets → Import Packages → Water (Basic)　（Pro版の方は「Water (Pro Only)」の方が綺麗 )<br/>
