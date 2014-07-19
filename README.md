@@ -4,6 +4,18 @@
 サーフィンゲームを作ります。
 
 ###【エディタの使い方】
+#### ５つのビュー
+Scene View
+Game View
+Hierarchy View
+Project View
+Inspector View
+
+#### ４つのScene View 操作
+
+#### シーンのセーブ
+
+#### シーンの注意
 
 ###【Import Asset】
 以下のパッケージをインポートします。<br/>
